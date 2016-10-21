@@ -14,25 +14,29 @@ We ended up with 109 proposals. 109 tickets to review. I immediately saw the nee
 
 ## Evaluating Github issue reactions
 
-I wrote a script called `cfp-review` that:
+I wrote a script called `review-cfp` that:
 
 1. Collects all `speaker` and `lightning talk` labeled tickets.
 2. Fetches the reactions on the ticket.
 3. Makes decisions based on reactions:
   + If the talk has 4 :+1: then change the ticket's milestone to "Four :+1:"
   + If the talk has 4 :-1: then change the ticket's milestone to "Send rejection email"
-4. If we haven't left a reaction to a specific ticket, then assign us to it.
+4. If an organizer hasn't left a reaction yet, then assign them to it.
 
-This script was incredibly helpful in sorting and reminding us to review.
+<script src="https://gist.github.com/katydecorah/9b1da3866ff610af0fdddc515349df99.js"></script>
+
+This script was incredibly helpful in sorting and reminding us to review!
 
 ## Fetching data from Github issues
 
 I wrote a script called `cfp-to-csv` that:
 
-1. Grabs all `speaker` and `lightning talk` labeled tickets. 
-2. Parses the data in the ticket to get their first name, email, type of talk, and talk title.
-3. Makes the data unique when needed. In some cases a speaker submitted more than one proposal. I used the email address and the key and appended titles together.
-4. Formats the data and writes a CSV file to the repo. 
+1. Grabs all `speaker` and `lightning talk` labeled tickets.
+2. Parses the data in the ticket to get the speaker's first name, email, type of talk, and talk title.
+3. Makes the data unique when needed. (In some cases a speaker submitted more than one proposal. Whenever talks had the same email address, I appended the titles together.)
+4. Formats the data and writes a CSV file to the repo.
+
+<script src="https://gist.github.com/katydecorah/19207735647baca8fcdbe41eaed8c90b.js"></script>
 
 We were able to import that CSV file into MailChimp and send all of the women who submitted a proposal a personalized email thanking them for their work and letting them know when they'll hear from us.
 
@@ -42,8 +46,7 @@ I wrote a script called `get-bios` that:
 
 1. Grabs all `speaker accepted` labeled tickets.
 2. Parses the data in the ticket and formats the data by creating yaml front matter and then adding their bio as the page content.
-3. Creates a markdown file where the file name is `firstname-lastname.md` and is saved to the `_speakers/` Jekyll collection and the content is the data formatted above.
+3. Creates a markdown file where the file name is `firstname-lastname.md`, the file is then saved to the `_speakers/` Jekyll collection, and finally writes the data collected in step 2 to the file.
 
-===
+<script src="https://gist.github.com/katydecorah/55f2b131fec12aa48cae30c24c47cfa0.js"></script>
 
-The groundwork for these scripts were recycled from internal Mapbox tools that I worked on with [Emily DuBois](), a very patient and gracious teacher <3.

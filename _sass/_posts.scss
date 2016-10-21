@@ -27,10 +27,16 @@
   ol,
   ul {
     max-width: $container-width - ($body-font-size * 2);
+
+    ol,
+    ul {
+      margin-bottom: .5em;
+      margin-top: .5em;
+    }
   }
 
   li {
-    margin-bottom: .7em;
+    margin-bottom: .5em;
   }
 
   blockquote {
@@ -84,6 +90,10 @@
       transition: opacity .3s ease-in;
     }
 
+  }
+
+  .gist-data {
+    max-height: 300px;
   }
 
   // scss-lint:disable PropertySortOrder, DeclarationOrder
